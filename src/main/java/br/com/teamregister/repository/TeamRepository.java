@@ -1,4 +1,4 @@
-package br.com.teamregister;
+package br.com.teamregister.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
