@@ -1,5 +1,6 @@
 package br.com.teamregister.controller;
 
+import br.com.teamregister.model.Player;
 import br.com.teamregister.model.Team;
 import br.com.teamregister.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,16 @@ public class TeamController {
 
         if(team.isPresent())
             return team.get();
+
+        return null;
+    }
+
+    @GetMapping("/teams/{id}/players")
+    public List<Player> getPlayers(@PathVariable Long id) {
+        Optional<Team> team = teamRepository.findById(id);
+
+        if(team.isPresent())
+            return team.get().getPlayers();
 
         return null;
     }
