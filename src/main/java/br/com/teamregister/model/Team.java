@@ -1,5 +1,8 @@
 package br.com.teamregister.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
+@Getter @Setter
 public class Team {
 
 	@Id
@@ -19,41 +23,10 @@ public class Team {
 	private Long id;
 	private String name;
 	private String location;
-	
+	private String emblemUrl;
+
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="teamId")
 	private List<Player> players;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
 
 }
